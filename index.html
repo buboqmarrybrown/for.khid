@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Khid Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #output {
+      margin-top: 20px;
+      white-space: pre-line;
+      font-size: 18px;
+    }
+    input, button {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>KHID VERIFICATION 🔐</h1>
+  <div id="output">KHID, IS THAT YOU?🤨 (y/n)</div>
+  <input type="text" id="inputBox">
+  <button onclick="process()">Enter</button>
+
+  <script>
+    let step = 0;
+    let subStep = 0;
+
+    function process() {
+      const input = document.getElementById("inputBox").value.trim();
+      const output = document.getElementById("output");
+      document.getElementById("inputBox").value = ""; // reset input
+
+      if (step === 0) {
+        // First question (y/n)
+        if (input.toLowerCase() === "n") {
+          output.textContent = "lahh asal ko buka link ni -_-";
+        } else if (input.toLowerCase() === "y") {
+          output.textContent = "confirm ni Khid???🤨 (y/n)";
+          step = 1;
+        } else {
+          output.textContent = "Input tak sah!";
+        }
+      } 
+      else if (step === 1) {
+        // Second confirmation
+        if (input.toLowerCase() === "n") {
+          output.textContent = "lahh asal ko buka link ni -_-";
+        } else if (input.toLowerCase() === "y") {
+          output.textContent = "Haiiiii Khiddd 👋\nTaip 'next' untuk teruskan:";
+          step = 2;
+        } else {
+          output.textContent = "Input tak sah!";
+        }
+      } 
+      else if (step === 2) {
+        // Next step verification
+        if (input.toLowerCase() === "next") {
+          output.textContent = "last verification if you are real Khid\nPassword (6 digit):";
+          step = 3;
+        } else {
+          output.textContent = "Oops, kena taip 'next' baru boleh teruskan 😅\nTaip 'next' untuk teruskan:";
+        }
+      } 
+      else if (step === 3) {
+        // Password check
+        if (input === "070309") {
+          output.textContent = "HAPPY BIRTHDAYYYYYYYYY 🎉🥳";
+        } else {
+          output.textContent = "SALAHHHHHHHHH 😤 Cuba lagi!\nPassword (6 digit):";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
